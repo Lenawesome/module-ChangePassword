@@ -1,0 +1,31 @@
+<?php
+$listCustomer = $block->getCustomer();
+?>
+<table>
+    <th>
+        <tr>
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Middle Name</td>
+            <td>LastName</td>
+            <td>Email</td>
+            <td>Password Hash</td>
+            <td colspan=2>Action</td>
+        </tr>
+    </th>
+    <?php 
+        foreach($listCustomer as $customer):
+    ?>
+    <tr>
+        <td><?=$customer->getId()?></td>
+        <td><?=$customer->getFirstname()?></td>
+        <td><?=$customer->getMiddlename()?></td>
+        <td><?=$customer->getLastname()?></td>
+        <td><?=$customer->getEmail()?></td>
+        <?php $password = $customer->getPasswordHash()?>
+        <td><?=$password?></td>
+        <td><a href="/magento2/praccus/index/changepassword?id=<?=$customer->getId()?>">Change Password</a></td>
+        <td>Delete</td>
+    </tr>
+    <?php endforeach;?>
+</table>
